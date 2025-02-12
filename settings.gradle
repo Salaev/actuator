@@ -1,0 +1,5 @@
+rootProject.name = 'actuator'
+
+include(":micrometer")
+project(":micrometer").projectDir = file("micrometer")
+
