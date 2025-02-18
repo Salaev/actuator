@@ -25,9 +25,7 @@ public class MicrometerControllerMetricsAspect {
     }
 
     // Pointcut для методов, аннотированных как @RequestMapping, @GetMapping и т.д.
-    @Pointcut("@annotation(org.springframework.web.bind.annotation.RequestMapping) " +
-            "&& execution(public * ru.otus.micrometer.MicrometerController.*(..))"
-    )
+    @Pointcut("execution(public * ru.otus.micrometer.MicrometerController.*(..))")
     public void requestMappingMethods() {
     }
 
