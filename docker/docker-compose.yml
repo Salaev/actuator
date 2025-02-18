@@ -24,17 +24,6 @@ services:
     depends_on:
       - prometheus  # Grafana зависит от Prometheus
 
-  spring-boot-app:
-    image: your-spring-boot-app-image  # Укажите свой образ Spring Boot приложения с интеграцией Micrometer/Prometheus
-    container_name: spring-boot-app
-    ports:
-      - "8080:8080"  # Пример, приложение доступно на порту 8080
-    networks:
-      - monitoring
-    environment:
-      - MANAGEMENT_ENDPOINTS_WEB_EXPOSURE_INCLUDE=health,metrics,prometheus  # Открытие метрик
-      - MANAGEMENT_ENDPOINT_PROMETHEUS_ENABLED=true  # Включение эндпоинта Prometheus
-
 networks:
   monitoring:
     driver: bridge

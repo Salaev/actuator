@@ -6,3 +6,6 @@ project(":micrometer").projectDir = file("micrometer")
 include(":actuator")
 project(":actuator").projectDir = file("actuator")
 
+include(":admin")
+project(":admin").projectDir = file("admin")
+
