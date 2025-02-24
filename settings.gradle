@@ -9,3 +9,6 @@ project(":actuator").projectDir = file("actuator")
 include(":admin")
 project(":admin").projectDir = file("admin")
 
+include(":observability")
+project(":observability").projectDir = file("observability")
+

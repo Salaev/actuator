@@ -1,29 +1,51 @@
-version: '3.7'
-
+version: "4"
 services:
-  prometheus:
-    image: prom/prometheus:latest
-    container_name: prometheus
-    ports:
-      - "9090:9090"  # Доступ к Prometheus через порт 9090
+
+#  db:
+#    image: postgres
+#    restart: always
+#    environment:
+#      POSTGRES_PASSWORD: root
+#    ports:
+#      - "5432:5432"
+  tempo:
+    image: grafana/tempo:2.2.2
+    command: [ "-config.file=/etc/tempo.yaml" ]
+    restart: always
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml  # Монтируем файл конфигурации
-    restart: unless-stopped
-    networks:
-      - monitoring
+      - ./tempo/tempo.yml:/etc/tempo.yaml:ro
+      - ./tempo/tempo-data:/tmp/tempo
+    ports:
+      - "3110:3100"  # Tempo
+      - "9411:9411" # zipkin
+  loki:
+    image: grafana/loki:latest
+    restart: always
+    command: [ "-config.file=/etc/loki/local-config.yaml" ]
+    ports:
+      - "3100:3100"
+
+  prometheus:
+    image: prom/prometheus:v2.46.0
+    restart: always
+    command:
+      - --enable-feature=exemplar-storage
+      - --config.file=/etc/prometheus/prometheus.yml
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "9090:9090"
 
   grafana:
-    image: grafana/grafana:latest
-    container_name: grafana
-    ports:
-      - "3000:3000"  # Доступ к Grafana через порт 3000
+    image: grafana/grafana:10.1.0
+    restart: always
+    volumes:
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources:ro
+      - ./grafana/provisioning/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/dashboards:/var/lib/grafana/dashboards
     environment:
-      - GF_SECURITY_ADMIN_PASSWORD=admin  # Пароль для администратора Grafana
-    networks:
-      - monitoring
-    depends_on:
-      - prometheus  # Grafana зависит от Prometheus
-
-networks:
-  monitoring:
-    driver: bridge
+      - GF_AUTH_ANONYMOUS_ENABLED=true
+      - GF_AUTH_ANONYMOUS_ORG_ROLE=Admin
+      - GF_AUTH_DISABLE_LOGIN_FORM=true
+    ports:
+      - "3000:3000"

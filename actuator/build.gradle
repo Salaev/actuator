@@ -20,8 +20,17 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
-	implementation 'io.micrometer:micrometer-registry-prometheus'
+	implementation 'org.springframework.boot:spring-boot-starter-aop'
+	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
 	implementation 'de.codecentric:spring-boot-admin-starter-client:3.4.2'
+	implementation 'com.github.loki4j:loki-logback-appender:1.6.0'
+	//trace
+	implementation 'io.micrometer:micrometer-tracing:1.4.3'
+//	implementation 'io.micrometer:micrometer-tracing-bridge-otel:1.4.3'
+	implementation 'io.micrometer:micrometer-tracing-bridge-brave:1.4.3'
+	implementation 'io.zipkin.reporter2:zipkin-reporter-brave:3.4.3'
+
+//	implementation 'io.opentelemetry:opentelemetry-exporter-otlp:1.43.0'
 }
 
 tasks.named('test') {
