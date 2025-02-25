@@ -1,4 +1,4 @@
-package ru.otus.observability.actuator;
+package ru.otus.observability.load;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

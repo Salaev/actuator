@@ -1,8 +1,7 @@
-package ru.otus.observability.actuator;
+package ru.otus.observability.load;
 
 import org.springframework.boot.actuate.health.Health;
 import org.springframework.boot.actuate.health.HealthIndicator;
-import org.springframework.stereotype.Component;
 
 //@Component
 public class CustomHealthIndicator implements HealthIndicator {

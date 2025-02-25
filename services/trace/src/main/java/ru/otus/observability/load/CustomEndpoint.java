@@ -1,4 +1,4 @@
-package ru.otus.observability.actuator;
+package ru.otus.observability.load;
 
 import org.springframework.boot.actuate.endpoint.annotation.DeleteOperation;
 import org.springframework.boot.actuate.endpoint.annotation.Endpoint;

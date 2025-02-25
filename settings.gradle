@@ -9,6 +9,9 @@ project(":actuator").projectDir = file("services/actuator")
 include(":trace")
 project(":trace").projectDir = file("services/trace")
 
+include(":load")
+project(":load").projectDir = file("services/load")
+
 include(":admin")
 project(":admin").projectDir = file("services/admin")
 

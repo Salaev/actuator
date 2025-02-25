@@ -1,4 +1,4 @@
-package ru.otus.observability.actuator;
+package ru.otus.observability.load;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

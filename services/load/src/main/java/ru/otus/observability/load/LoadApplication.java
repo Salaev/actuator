@@ -1,16 +1,15 @@
-package ru.otus.observability.actuator;
+package ru.otus.observability.load;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.scheduling.annotation.EnableScheduling;
 
 @SpringBootApplication
 @EnableScheduling
-public class ActuatorApplication {
+public class LoadApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(ActuatorApplication.class, args);
+		SpringApplication.run(LoadApplication.class, args);
 	}
 
 }
