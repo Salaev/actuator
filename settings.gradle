@@ -1,14 +1,19 @@
-rootProject.name = 'actuator'
+rootProject.name = 'observability'
 
-include(":micrometer")
-project(":micrometer").projectDir = file("micrometer")
+include(":metrics")
+project(":metrics").projectDir = file("services/metrics")
 
 include(":actuator")
-project(":actuator").projectDir = file("actuator")
+project(":actuator").projectDir = file("services/actuator")
+
+include(":trace")
+project(":trace").projectDir = file("services/trace")
 
 include(":admin")
-project(":admin").projectDir = file("admin")
+project(":admin").projectDir = file("services/admin")
 
-include(":observability")
-project(":observability").projectDir = file("observability")
+include(":randomanswer")
+project(":randomanswer").projectDir = file("services/randomanswer")
+
+
 
