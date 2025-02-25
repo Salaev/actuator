@@ -1,5 +1,12 @@
 # Код для лекции по актуатору
 
+service/actuator - демонстрация возможности spring actuator
+service/admin - админская часть для spring actuator
+service/load демонстрация работы сервиса, работает  связке с service/randomanswer
+service/randomanswer - возвращает случные ответы в том числе ошибочные
+service/metrics - демонстрация работы с метриками
+service/trace - демонстрация работы с трейсами
+
 prometheus http://localhost:9090
 grafana http://localhost:3000
 admin http://localhost:8084/
