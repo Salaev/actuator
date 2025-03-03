@@ -1,11 +1,10 @@
-package ru.otus.observability.randomanswer;
+package ru.otus.observability.randomanswer.customprometheus;
 
 import io.micrometer.prometheusmetrics.PrometheusConfig;
 import io.micrometer.prometheusmetrics.PrometheusMeterRegistry;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
 
-@Configuration
+//@Configuration
 public class ConfigurationApplication {
 
     @Bean

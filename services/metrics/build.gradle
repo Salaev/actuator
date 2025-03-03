@@ -20,11 +20,10 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
-    implementation 'io.micrometer:micrometer-core:1.12.1'
+    implementation 'org.springframework.boot:spring-boot-starter-actuator'
+   // implementation 'io.micrometer:micrometer-core:1.12.1'
     implementation 'org.springframework.boot:spring-boot-starter-aop'
     implementation 'io.micrometer:micrometer-registry-prometheus:1.15.0-M2'
-
-
 }
 
 tasks.named('test') {

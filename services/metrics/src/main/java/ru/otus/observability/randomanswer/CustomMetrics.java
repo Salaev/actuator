@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 
 @Aspect
 @Component
-public class MicrometerControllerMetricsAspect {
+public class CustomMetrics {
 
     private final Counter requestCounter;
     private final Timer requestTimer;
 
-    public MicrometerControllerMetricsAspect(MeterRegistry meterRegistry) {
+    public CustomMetrics(MeterRegistry meterRegistry) {
         // Счётчик запросов
         this.requestCounter = meterRegistry.counter("rest.controller.requests");
 
@@ -25,7 +25,7 @@ public class MicrometerControllerMetricsAspect {
     }
 
     // Pointcut для методов, аннотированных как @RequestMapping, @GetMapping и т.д.
-    @Pointcut("execution(public * ru.otus.observability.randomanswer.MicrometerController.*(..))")
+    @Pointcut("execution(public * ru.otus.observability.randomanswer.MetricsController.*(..))")
     public void requestMappingMethods() {
     }
 

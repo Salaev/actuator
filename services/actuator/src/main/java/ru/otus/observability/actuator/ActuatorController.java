@@ -1,4 +1,4 @@
-package ru.otus.observability.load;
+package ru.otus.observability.actuator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;

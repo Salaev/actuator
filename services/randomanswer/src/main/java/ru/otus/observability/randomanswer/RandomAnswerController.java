@@ -7,6 +7,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import ru.otus.observability.randomanswer.db.UserDetails;
+import ru.otus.observability.randomanswer.db.UserRepository;
 
 import java.util.List;
 import java.util.Random;
@@ -14,6 +16,12 @@ import java.util.Random;
 @RestController
 @RequestMapping("/api")
 public class RandomAnswerController {
+
+    private final UserRepository userRepository;
+
+    public RandomAnswerController(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     private final Logger logger = LoggerFactory.getLogger(RandomAnswerController.class);
 
@@ -29,7 +37,11 @@ public class RandomAnswerController {
 
     @GetMapping("/random-response")
     public ResponseEntity<String> getRandomResponse() throws InterruptedException {
+        logger.info("Request");
         Thread.sleep(getDelay());
+        userRepository.save(new UserDetails("Иван", "Иванов", "ivanov@example.com"));
+        var users = userRepository.findAll();
+        logger.debug("Users: {}", users);
         HttpStatus randomStatus = STATUSES.get(random.nextInt(STATUSES.size()));
         if (randomStatus == HttpStatus.OK)
             logger.info("Received response: OK");

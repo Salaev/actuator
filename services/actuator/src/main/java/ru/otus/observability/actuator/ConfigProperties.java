@@ -1,4 +1,4 @@
-package ru.otus.observability.load;
+package ru.otus.observability.actuator;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Configuration;

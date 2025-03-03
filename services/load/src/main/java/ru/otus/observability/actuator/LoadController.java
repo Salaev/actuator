@@ -1,4 +1,4 @@
-package ru.otus.observability.randomanswer;
+package ru.otus.observability.actuator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,17 +12,18 @@ import java.util.Random;
 
 @RestController
 @RequestMapping("/api")
-public class MicrometerController {
+public class LoadController {
 
-    private final Logger logger = LoggerFactory.getLogger(MicrometerController.class);
+    private final Logger logger = LoggerFactory.getLogger(LoadController.class);
+
+    private final RestTemplate restTemplate = new RestTemplate();
 
     private final Random random = new Random();
     double lambda = 0.005;
 
-    private final RestTemplate restTemplate = new RestTemplate();
-
     @GetMapping("/helloOtus")
-    public String helloOtus() throws InterruptedException {
+    public String sayHello() throws InterruptedException {
+        logger.debug("Debug");
         Thread.sleep(getDelay());
         return "Привет, Otus!" + getRandomResponse();
     }
@@ -33,7 +34,7 @@ public class MicrometerController {
     }
 
     private String getRandomResponse() {
-        String serviceUrl = "http://localhost:8085/api/random-response";
+        String serviceUrl = "http://localhost:8091/api/random-response";
         ResponseEntity<String> response = restTemplate.getForEntity(serviceUrl, String.class);
         logger.info("Received response: {} - {}", response.getStatusCode(), response.getBody());
         return response.getBody();

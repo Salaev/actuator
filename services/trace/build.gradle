@@ -22,7 +22,6 @@ dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-actuator'
 	implementation 'org.springframework.boot:spring-boot-starter-aop'
 	runtimeOnly 'io.micrometer:micrometer-registry-prometheus'
-	//implementation 'de.codecentric:spring-boot-admin-starter-client:3.4.2'
 	implementation 'com.github.loki4j:loki-logback-appender:1.6.0'
 	//trace
 	implementation 'io.micrometer:micrometer-tracing:1.4.3'

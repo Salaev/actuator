@@ -1,5 +1,23 @@
 server:
-  port: 8082
+  port: 8083
+
+management:
+  metrics:
+    tags:
+      application: app-actuator
+    distribution:
+      percentiles-histogram:
+        http:
+          server:
+            requests: 'true'
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    beans:
+      cache:
+        time-to-live: 2s
 
 
 
