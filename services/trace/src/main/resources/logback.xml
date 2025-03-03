@@ -1,6 +1,6 @@
 <configuration>
 
-    <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} traceID=%X{traceId} [%thread] %-5level %logger{36} - %msg%n"/>
+    <property name="FILE_LOG_PATTERN" value="%d{yyyy-MM-dd HH:mm:ss} traceID=%X{traceId} spanID=%X{spanId} [%thread] %-5level %logger{36} - %msg%n"/>
 
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
         <encoder>

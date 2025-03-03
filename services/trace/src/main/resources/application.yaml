@@ -2,16 +2,16 @@ server:
   port: 8083
 spring:
   application:
-    name: App actuator
+    name: App trace
 
 logging:
   pattern:
     level: '%5p [${spring.application.name:},%X{traceId:-},%X{spanId:-}]'
 info:
   app:
-    name: "Spring Boot 3 + Actuator"
+    name: "Spring Boot 3 + trace"
     version: "1.0.0"
-    description: "Spring boot actuator"
+    description: "Spring boot trace"
 management:
   endpoint:
     health:
@@ -27,7 +27,7 @@ management:
         include: "*"
   metrics:
     tags:
-      application: app-actuator
+      application: app-trace
     distribution:
       percentiles-histogram:
         http:
